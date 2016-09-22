@@ -15,8 +15,8 @@ export class HeroesComponent {
   constructor(heroService:HeroService, router:Router) {
     this.router = router;
     this.heroService = heroService;
-    this.heroService.getHeroes().subscribe(result => {
-      this.heroes = result.results;
+    this.heroService.getHeroes().subscribe(result => { 
+      this.heroes = result.results; 
     });
   }
 
