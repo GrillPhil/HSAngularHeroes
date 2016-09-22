@@ -60,3 +60,26 @@ body {
   margin-right: .8em;
   border-radius: 4px 0 0 4px;
 }
+
+h2 {
+    clear: both;
+}
+nav ul {
+    margin: 0;
+    padding: 0;
+}
+nav li {
+    float: left;
+    list-style: none;
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+nav li a {
+    color: white;
+    text-decoration: none;
+    background: #336699;
+    padding: 10px;
+}
+  nav li a:hover {
+      background: #003366;
+  }
