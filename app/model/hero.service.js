@@ -9,35 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var http_1 = require('@angular/http');
+require('rxjs/Rx');
 var HeroService = (function () {
-    function HeroService() {
+    function HeroService(http) {
+        this.http = http;
     }
     HeroService.prototype.getHeroes = function () {
-        return [
-            { id: 11, name: 'Mr. Nice' },
-            { id: 12, name: 'Narco' },
-            { id: 13, name: 'Bombasto' },
-            { id: 14, name: 'Celeritas' },
-            { id: 15, name: 'Magneta' },
-            { id: 16, name: 'RubberMan' },
-            { id: 17, name: 'Dynama' },
-            { id: 18, name: 'Dr IQ' },
-            { id: 19, name: 'Magma' },
-            { id: 20, name: 'Tornado' }
-        ];
+        return this.http.get('http://swapi.co/api/people/').map(function (result) { return result.json(); });
     };
-    HeroService.prototype.getHero = function (id) {
-        var heroes = this.getHeroes();
-        for (var i = 0; i < heroes.length; i++) {
-            if (heroes[i].id === id) {
-                return heroes[i];
-            }
-        }
-        return null;
+    HeroService.prototype.getHero = function (url) {
+        return this.http.get(url).map(function (result) { return result.json(); });
     };
     HeroService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [http_1.Http])
     ], HeroService);
     return HeroService;
 }());

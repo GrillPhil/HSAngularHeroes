@@ -15,11 +15,13 @@ export class HeroesComponent {
   constructor(heroService:HeroService, router:Router) {
     this.router = router;
     this.heroService = heroService;
-    this.heroes = this.heroService.getHeroes();
+    this.heroService.getHeroes().subscribe(result => {
+      this.heroes = result.results;
+    });
   }
 
   private onSelect(hero:Hero) {
-    let link = ['/detail', hero.id];
+    let link = ['/detail', hero.url];
     this.router.navigate(link);
   }
 }

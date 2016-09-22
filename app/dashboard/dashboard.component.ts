@@ -15,11 +15,13 @@ export class DashboardComponent {
   constructor(heroService:HeroService, router:Router) {
     this.router = router;
     this.heroService = heroService;
-    this.heroes = this.heroService.getHeroes().slice(1,5);
+    this.heroService.getHeroes().subscribe(result => {
+      this.heroes = result.results;
+    });
   }
 
   gotoDetail(hero: Hero): void {
-    let link = ['/detail', hero.id];
+    let link = ['/detail', hero.url];
     this.router.navigate(link);
   }
 }

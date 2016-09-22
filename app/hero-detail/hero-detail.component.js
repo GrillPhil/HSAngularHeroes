@@ -17,8 +17,10 @@ var HeroDetailComponent = (function () {
         this.route = route;
         this.heroService = heroService;
         this.route.params.forEach(function (params) {
-            var id = +params['id'];
-            _this.hero = _this.heroService.getHero(id);
+            var url = params['url'];
+            _this.heroService.getHero(url).subscribe(function (result) {
+                _this.hero = result;
+            });
         });
     }
     HeroDetailComponent = __decorate([

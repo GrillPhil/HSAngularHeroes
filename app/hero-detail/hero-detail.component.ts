@@ -17,8 +17,10 @@ export class HeroDetailComponent {
       this.heroService = heroService;
 
       this.route.params.forEach((params: Params) => {
-        let id = +params['id'];
-        this.hero = this.heroService.getHero(id);
+        let url = params['url'];
+        this.heroService.getHero(url).subscribe(result => {
+          this.hero = result;
+        });
       });
     }
 }

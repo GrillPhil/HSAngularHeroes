@@ -13,12 +13,15 @@ var router_1 = require('@angular/router');
 var hero_service_1 = require('./../model/hero.service');
 var HeroesComponent = (function () {
     function HeroesComponent(heroService, router) {
+        var _this = this;
         this.router = router;
         this.heroService = heroService;
-        this.heroes = this.heroService.getHeroes();
+        this.heroService.getHeroes().subscribe(function (result) {
+            _this.heroes = result.results;
+        });
     }
     HeroesComponent.prototype.onSelect = function (hero) {
-        var link = ['/detail', hero.id];
+        var link = ['/detail', hero.url];
         this.router.navigate(link);
     };
     HeroesComponent = __decorate([

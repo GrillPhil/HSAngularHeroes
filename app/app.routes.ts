@@ -20,7 +20,7 @@ const appRoutes: Routes = [
         component: HeroesComponent
     },
     {
-        path: 'detail/:id',
+        path: 'detail/:url',
         component: HeroDetailComponent
     }
 ];

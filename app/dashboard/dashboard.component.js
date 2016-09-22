@@ -13,12 +13,15 @@ var router_1 = require('@angular/router');
 var hero_service_1 = require('./../model/hero.service');
 var DashboardComponent = (function () {
     function DashboardComponent(heroService, router) {
+        var _this = this;
         this.router = router;
         this.heroService = heroService;
-        this.heroes = this.heroService.getHeroes().slice(1, 5);
+        this.heroService.getHeroes().subscribe(function (result) {
+            _this.heroes = result.results;
+        });
     }
     DashboardComponent.prototype.gotoDetail = function (hero) {
-        var link = ['/detail', hero.id];
+        var link = ['/detail', hero.url];
         this.router.navigate(link);
     };
     DashboardComponent = __decorate([
