@@ -26,6 +26,15 @@ var HeroService = (function () {
             { id: 20, name: 'Tornado' }
         ];
     };
+    HeroService.prototype.getHero = function (id) {
+        var heroes = this.getHeroes();
+        for (var i = 0; i < heroes.length; i++) {
+            if (heroes[i].id === id) {
+                return heroes[i];
+            }
+        }
+        return null;
+    };
     HeroService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])

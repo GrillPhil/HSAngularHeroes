@@ -9,22 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
 var hero_service_1 = require('./../model/hero.service');
 var HeroesComponent = (function () {
-    function HeroesComponent(heroService) {
+    function HeroesComponent(heroService, router) {
+        this.router = router;
         this.heroService = heroService;
         this.heroes = this.heroService.getHeroes();
     }
     HeroesComponent.prototype.onSelect = function (hero) {
-        this.selectedHero = hero;
+        var link = ['/detail', hero.id];
+        this.router.navigate(link);
     };
     HeroesComponent = __decorate([
         core_1.Component({
             selector: 'heroes',
-            templateUrl: './app/heroes/heroes.component.html',
-            providers: [hero_service_1.HeroService]
+            templateUrl: './app/heroes/heroes.component.html'
         }), 
-        __metadata('design:paramtypes', [hero_service_1.HeroService])
+        __metadata('design:paramtypes', [hero_service_1.HeroService, router_1.Router])
     ], HeroesComponent);
     return HeroesComponent;
 }());

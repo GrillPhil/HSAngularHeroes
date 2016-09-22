@@ -9,15 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var hero_service_1 = require('./../model/hero.service');
 var DashboardComponent = (function () {
-    function DashboardComponent() {
+    function DashboardComponent(heroService, router) {
+        this.router = router;
+        this.heroService = heroService;
+        this.heroes = this.heroService.getHeroes().slice(1, 5);
     }
+    DashboardComponent.prototype.gotoDetail = function (hero) {
+        var link = ['/detail', hero.id];
+        this.router.navigate(link);
+    };
     DashboardComponent = __decorate([
         core_1.Component({
             selector: 'my-dashboard',
             templateUrl: './app/dashboard/dashboard.component.html'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [hero_service_1.HeroService, router_1.Router])
     ], DashboardComponent);
     return DashboardComponent;
 }());

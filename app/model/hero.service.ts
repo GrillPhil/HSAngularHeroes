@@ -17,4 +17,14 @@ export class HeroService {
             { id: 20, name: 'Tornado' }
         ];
     }
+
+    public getHero(id:number): Hero {
+        let heroes = this.getHeroes();
+        for (let i = 0; i < heroes.length; i++) {
+            if (heroes[i].id === id) {
+                return heroes[i];
+            }
+        }
+        return null;
+    }
 }
